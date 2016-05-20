@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" type="text/css" href="template00.css">
+</head>
+<div id="layout" class="pure-g">
+  <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+      <h1>Blogininator</h1>
+      <h2>A page I've lifted from Pure.css</h2>
+      {% if error!=None %}
+      <h2>{{error}}</h2>
+      {% endif %}
+      <nav class="nav">
+	{% if s.logged %}<h3>You're already logged in</h3>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a class="pure-button" href="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="pure-button" href="#">de-Login</a>
+          </li>
+        </ul>
+      </nav>
+      {% else %}
+      <form action="/login" method="POST" >
+        Username: <input type="text" name="username"><br>
+	Password: <input type="text" name="password"><br>
+	<input type="submit" name="button" value="login">  <input type="submit" name="button" value="New Account"> 
+      </form>
+      {% endif %}
+
+      <div class="footer">
+        <div class="pure-menu pure-menu-horizontal">
+          <ul>
+            <li class="pure-menu-item"><a href="#">About</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Twitter</a></li>
+            <li class="pure-menu-item"><a href="https://github.com/hfilosa/Bloginator" class="pure-menu-link">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
