@@ -12,19 +12,36 @@ def go():
         c.execute(q)
         conn.commit()
 
-
-def addAnnouncement(club, submitter, osis, title, short_text, long_text, date, id_num):
-
+"""======== Null addAnnouncement(club, submitter, osis, title, short_text, long_text, date, id_num) ==========
+Inputs: club        -> The club or team submitting the announcement
+        submitter   -> The name of the person who submitted the announcement
+        osis        -> The osis of the person who submitted the announcement
+        title       -> The title of the announcement
+        short_text  -> The short form of the announcement
+        long_text   -> The long form of the announcement
+        date        -> The time the announcement is logged as
+Returns: 
+  Nothing
+"""
+def addAnnouncement(club, submitter, osis, title, short_text, long_text, date):
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
-    i = iterate()
+    q = """SELECT MAX(id) FROM announcements"""
+    res = c.execute(q)
+    for r in res:
+        id_num=r[0]+1
     q = """insert into announcements values ("%s","%s",%i,"%s","%s","%s","%s","%i");"""
     q = q%(club,submitter,osis,title, short_text, long_text, date, id_num)
     c.execute(q)
     conn.commit()
 
 
-def check():
+"""======== Null printArchive() ==========
+Inputs: None
+Returns: 
+  Prints all the archived announcements
+"""
+def printArchive():
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
     q = """SELECT * FROM announcements"""
@@ -32,16 +49,28 @@ def check():
     for r in res:
         print r
     
+"""======== Array getAnnouncementByDate(start_date,end_date) ==========
+Inputs: start_date -> Format "YYYY-MM-DD HH-MM-SS". Must have leading zeroes for time component. Use military time
+        end_date
+Returns: 
+  All archived posts in that datetime range
+"""
 def getAnnouncementByDate(start_date,end_date):
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
-    q = """SELECT * FROM announcements where DATE(date) between '%s' and '%s'; """
+    q = """SELECT * FROM announcements WHERE date BETWEEN '%s' AND '%s';"""
     #q = """SELECT * FROM announcements where 'date' >= '%s' and 'date' <= '%s'"""
     q = q%(start_date,end_date)
     res = c.execute(q)
-    for r in res:
-        print r
+    return res
 
 go()    
-#check()
-getAnnouncementByDate("2016-05-17","2016-05-20");
+conn = sqlite3.connect(db_name)
+c = conn.cursor()
+q = """SELECT MAX(id) FROM announcements"""
+res = c.execute(q)
+for r in res:
+     print r
+print r[0]
+#printArchive()
+#getAnnouncementByDate("2016-05-18 09:00:00","2016-05-19 00:00:00");

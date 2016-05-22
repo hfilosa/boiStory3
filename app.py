@@ -8,8 +8,40 @@ app = Flask(__name__)
 def home():
     return render_template("home.html")
 
+@app.route("/submit",methods=["GET","POST"])
+def submit():
+    errors=[]
+    if request.method == "POST":
+        
+        club1=request.form["club"]
+        submitter1=request.form["submitter"]
+        osis1=request.form["osis"]
+        short1=request.form["short"]
+        long_form1=request.form["long"]
+
+        if club1  == "Club/Team Name" or club1 is None:
+            errors.append("No Club/Team name given")
+            club1 = "Club/Team Name"
+        if submitter1 == "Name" or submitter1 is None:
+            errors.append("No name given for who is submitting this announcement")
+            submitter1 = "Name"
+        if osis1 == "9-Digit OSIS" or osis1 is None:
+            errors.append("No OSIS given for who is submitting this announcement")
+            osis1 = "9-Digit OSIS"
+        elif len(osis) != 9:
+            errors.append("An OSIS must be 9 digits long")
+        if short1=="Short form of your announcement. 200 characters maximum" or short1 is None:
+            errors.append("No announcement given")
+            short1="Short form of your announcement. 200 characters maximum"
+        if long_form1 is None:
+            long_form="Optional longer form of your announcement"
+        if len(errors)>0:    
+            return render_template("submit.html",error=errors,club=club1,submitter=submitter1,osis=osis1,short_form=short1,long_form=long_form1)
+        else:
+            return redirect("/");
+    return render_template("submit.html",error=errors,club="Club/Team Name",submitter="Name",osis="9-Digit OSIS",short_form="Short form of your announcement. 200 characters maximum",long_form="Optional longer form of your announcement")
 
 if __name__ == "__main__":
-app.debug = True
-app.secret_key = "Don't store this on github"
-app.run(host="0.0.0.0", port=8000)
+    app.debug = True
+    app.secret_key = "Don't store this on github"
+    app.run(host="0.0.0.0", port=8000)

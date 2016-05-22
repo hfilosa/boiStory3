@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Submit New Announcement</title>
+  </head>
+  <body>
+    {% if error != None %}
+    {% for e in error %}
+    <h1>{{e}}</h1>
+    {% endfor %}
+    {% endif %}
+    <form action="/submit" method="post">
+       <input type="text" name="club" value="{{club}}">
+      <input type="text" name="submitter" value="{{submitter}}">
+      <input type="text" name="osis" value="{{osis}}">
+      <br>
+      <input type="text" name="short" value="{{short_form}}">
+      <br>
+      <br>
+      <input type="text" name="long" value="{{long_form}}">
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
