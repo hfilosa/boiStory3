@@ -1,5 +1,6 @@
 from flask import Flask,render_template, session, request, redirect, url_for 
 import backend
+import datetime
 
 app = Flask(__name__)
 
@@ -38,6 +39,7 @@ def submit():
         if len(errors)>0:    
             return render_template("submit.html",error=errors,club=club1,submitter=submitter1,osis=osis1,short_form=short1,long_form=long_form1)
         else:
+            backend.addAnnouncement(club1,submitter1,osis1,title1,short_form1,long_form1,"2016-");
             return redirect("/");
     return render_template("submit.html",error=errors,club="Club/Team Name",submitter="Name",osis="9-Digit OSIS",short_form="Short form of your announcement. 200 characters maximum",long_form="Optional longer form of your announcement")
 

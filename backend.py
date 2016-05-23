@@ -8,7 +8,7 @@ def go():
         c = conn.cursor()
         q = """create table announcements (club text, submitter text, osis integer, title text, short_text text, long_text text, date text, id integer);"""
         c.execute(q)
-        q = """insert into announcements values ("Dancing Pandas", "Henry Filosa", 208163568, "Announcement Database successfully created", "We did it","This is the long version of this story","2016-05-18 09:30:0",1);"""
+        q = """insert into announcements values ("Dancing Pandas", "Henry Filosa", 208163568, "Announcement Database successfully created", "We did it","This is the long version of this story","2016-05-18",1);"""
         c.execute(q)
         conn.commit()
 
@@ -50,27 +50,21 @@ def printArchive():
         print r
     
 """======== Array getAnnouncementByDate(start_date,end_date) ==========
-Inputs: start_date -> Format "YYYY-MM-DD HH-MM-SS". Must have leading zeroes for time component. Use military time
-        end_date
+Inputs: date -> Format "YYYY-MM-DD". Must have leading zeroes for date.
+         ex. 2016-05-04 is the 4th of may, 2016
 Returns: 
-  All archived posts in that datetime range
+  All archived posts with that date stamp
 """
-def getAnnouncementByDate(start_date,end_date):
+def getAnnouncementByDate(date):
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
-    q = """SELECT * FROM announcements WHERE date BETWEEN '%s' AND '%s';"""
-    #q = """SELECT * FROM announcements where 'date' >= '%s' and 'date' <= '%s'"""
-    q = q%(start_date,end_date)
+    q = """SELECT * FROM announcements WHERE DATE(date) == DATE('%s');"""
+    q = q%(date)
     res = c.execute(q)
+    #for r in res:
+     #   print r
     return res
 
 go()    
-conn = sqlite3.connect(db_name)
-c = conn.cursor()
-q = """SELECT MAX(id) FROM announcements"""
-res = c.execute(q)
-for r in res:
-     print r
-print r[0]
 #printArchive()
-#getAnnouncementByDate("2016-05-18 09:00:00","2016-05-19 00:00:00");
+#getAnnouncementByDate("2016-05-18");
