@@ -7,7 +7,16 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template("home.html")
+    year=str(datetime.date.today().year)
+    month=str(datetime.date.today().month)
+    if month<10:
+    month="0"+month
+    day=str(datetime.date.today().day)
+    if day<10:
+    day="0"+day
+    currentDate=year+"-"+month+"-"+day
+    announcements=backend.getAnnouncementByDate(currentDate)
+    return render_template("home.html",a=announcements)
 
 @app.route("/submit",methods=["GET","POST"])
 def submit():
@@ -39,7 +48,15 @@ def submit():
         if len(errors)>0:    
             return render_template("submit.html",error=errors,club=club1,submitter=submitter1,osis=osis1,short_form=short1,long_form=long_form1)
         else:
-            backend.addAnnouncement(club1,submitter1,osis1,title1,short_form1,long_form1,"2016-");
+            year=str(datetime.date.today().year)
+            month=str(datetime.date.today().month)
+            if month<10:
+                month="0"+month
+            day=str(datetime.date.today().day)
+            if day<10:
+                day="0"+day
+            currentDate=year+"-"+month+"-"+day
+            backend.addAnnouncement(club1,submitter1,osis1,title1,short_form1,long_form1,currentDate);
             return redirect("/");
     return render_template("submit.html",error=errors,club="Club/Team Name",submitter="Name",osis="9-Digit OSIS",short_form="Short form of your announcement. 200 characters maximum",long_form="Optional longer form of your announcement")
 
