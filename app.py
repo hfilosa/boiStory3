@@ -10,10 +10,10 @@ def home():
     year=str(datetime.date.today().year)
     month=str(datetime.date.today().month)
     if month<10:
-    month="0"+month
+        month="0"+month
     day=str(datetime.date.today().day)
     if day<10:
-    day="0"+day
+        day="0"+day
     currentDate=year+"-"+month+"-"+day
     announcements=backend.getAnnouncementByDate(currentDate)
     return render_template("home.html",a=announcements)
