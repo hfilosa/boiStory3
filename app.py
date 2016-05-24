@@ -9,15 +9,22 @@ app = Flask(__name__)
 def home():
     year=str(datetime.date.today().year)
     month=str(datetime.date.today().month)
+    displayDate=month+"/"
     if month<10:
         month="0"+month
     day=str(datetime.date.today().day)
+    displayDate=displayDate+day+"/"+year[2:]
     if day<10:
         day="0"+day
     currentDate=year+"-"+month+"-"+day
-    displayDate=month+"/"+day+"/"+year
+
+    currentDate="2016-05-18"
+    displayDate="5/18/16"
+    
     announcements=backend.getAnnouncementByDate(currentDate)
-    return render_template("home.html",a=announcements,todayDate=displayDate)
+    print announcements
+    #print announcements[0]
+    return render_template("home.html",anonce=announcements,todayDate=displayDate)
 
 @app.route("/submit",methods=["GET","POST"])
 def submit():

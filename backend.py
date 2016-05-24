@@ -61,9 +61,10 @@ def getAnnouncementByDate(date):
     q = """SELECT * FROM announcements WHERE DATE(date) == DATE('%s');"""
     q = q%(date)
     res = c.execute(q)
-    #for r in res:
-     #   print r
-    return res
+    ans = []
+    for r in res:
+        ans.append(r)
+    return ans
 
 go()    
 #printArchive()
