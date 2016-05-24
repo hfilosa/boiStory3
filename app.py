@@ -15,8 +15,9 @@ def home():
     if day<10:
         day="0"+day
     currentDate=year+"-"+month+"-"+day
+    displayDate=month+"/"+day+"/"+year
     announcements=backend.getAnnouncementByDate(currentDate)
-    return render_template("home.html",a=announcements)
+    return render_template("home.html",a=announcements,todayDate=displayDate)
 
 @app.route("/submit",methods=["GET","POST"])
 def submit():
