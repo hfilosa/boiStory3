@@ -12,8 +12,9 @@
 	<ul class="nav-list">
 	  <h2>Announcments for {{todayDate}}</h2>
 	  {% for a in anonce %}
-	  <h3>{{a.title}}</h3>
-	  <h3>{{a.short_text}}
+	  <!-- a[3] will give the annoucements title and a[4] will give the short text -->
+	  <h3>{{a[3]}}</h3>
+	  <h3>{{a[4]}}</h3>
 	  {% endfor %}
       </nav>
     </div>

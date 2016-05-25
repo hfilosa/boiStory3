@@ -1,6 +1,58 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script type="text/javascript">
+      //auto expand textarea
+      function adjust_textarea(h) {
+      h.style.height = "20px";
+      h.style.height = (h.scrollHeight)+"px";
+      }
+    </script>
+    <link rel="stylesheet" type="text/css" href="static/submit.css">
+    <title>Submit New Announcement</title>
+  </head>
+  <form class="form-style-7">
+    <ul>
+      <li>
+	<label for="name">Club/Team</label>
+	<input type="text" name="club" maxlength="30">
+	<span>Enter your club/team name here</span>
+      </li>
+      <li>
+	<label for="name">Name</label>
+	<input type="text" name="name" maxlength="30">
+	<span>Enter your name here</span>
+      </li>
+      <li>
+	<label for="name">OSIS</label>
+	<input type="text" name="osis" maxlength="9">
+	<span>Enter your 9-Digit OSIS here</span>
+      </li>
+      <li>
+	<label for="name">Title</label>
+	<input type="text" name="osis" maxlength="50">
+	<span>Title of your announcement. Ex. Peglegs win Championship 50 characters maximum</span>
+      </li>
+ 
+      <li>
+	<label for="bio"></label>
+	<textarea name="short" onkeyup="adjust_textarea(this)" maxlength="150"></textarea>
+	<span>Short form of your announcement. IMPORTANT:This is what will be announced on the speakers. 150 characters maximum</span>
+      </li>
+      <li>
+	<label for="bio"></label>
+	<textarea name="long" onkeyup="adjust_textarea(this)"></textarea>
+	<span>Long form of your announcement. No length limit. Optional</span>
+      </li>
+      <li>
+	<input type="submit" value="Submit" >
+      </li>
+    </ul>
+  </form>
+
+<!--
+<html>
+  <head>
     <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
     <script src='lib/jquery.js'></script>
     <script src='lib/moment.js'></script>
@@ -26,8 +78,9 @@
     <form action="/submit" method="post">
        <input type="text" name="club" value="{{club}}">
       <input type="text" name="submitter" value="{{submitter}}">
-      <!--<input type="text" name="date" value="{{date}}">-->
       <input type="text" name="osis" value="{{osis}}">
+      <br>
+      <input type="text" name="title" value="{{title}}">
       <br>
       <input type="text" name="short" value="{{short_form}}">
       <br>
@@ -39,3 +92,4 @@
     <div id='calendar'></div>
   </body>
 </html>
+-->
