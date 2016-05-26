@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link type="text/css" rel="stylesheet" href="static/template00.css">
 	<title>Stuy Announcements</title>
 </head>
-<div id="layout" class="pure-g">
-  <div class="sidebar pure-u-1 pure-u-md-1-4">
-    <div class="header">
-      <h1>Stuyvesant High School Announcements</h1>
-      <nav class="nav">
-	<ul class="nav-list">
-	  <h2>Announcments for {{todayDate}}</h2>
-	  {% for a in anonce %}
-	  <!-- a[3] will give the annoucements title and a[4] will give the short text -->
-	  <h3>{{a[3]}}</h3>
-	  <h3>{{a[4]}}</h3>
-	  {% endfor %}
-      </nav>
-    </div>
-  </div>
-  <hr>
-  <hr>
-  <hr>
+
+<div id="divhead">
+  <h1 id="header">Stuyvesant High School Announcements</h1>
 </div>
+<div>
+  <h2>Announcments for {{todayDate}}</h2>
+  {% for a in anonce %}
+  <!-- a[3] will give the annoucements title and a[4] will give the short text -->
+  <h3>{{a[3]}}</h3>
+  <h3>{{a[4]}}</h3>
+  {% endfor %}
+</div>
+
+<hr>
+<hr>
+<hr>
+
+<div>
+  <h3> Click here to submit a new Announcement </h3>
+  <button onclick="window.location.href='/submit'">New Announcement</button>
+</div>
+
+<script>
+document.body.style.backgroundColor = "#ffff9f";
+document.getElementById("divhead").style.backgroundColor = "#ff0000";
+document.getElementById("header").style.color = "blue";
+document.getElementById("header").style.font = "italic bold 40px times new roman,serif";
+</script>
+
+
 </html>
