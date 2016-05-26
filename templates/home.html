@@ -1,36 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Stuy Announcements</title>
+  <title>Stuy Announcements</title>
+  <style>
+  body {margin:0;}
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #533;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  li {
+    float: left;
+  }
+
+  li {
+    border-right: 1px solid #bbb;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+
+.active {
+    background-color: #4CAF50;
+}
+</style>
 </head>
+<body>
 
-<div id="divhead">
-  <h1 id="header">Stuyvesant High School Announcements</h1>
+<ul>
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="/submit">New Announcement</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+
+<div style="padding:20px;margin-top:30px;background-color:#1abc9c;height:1500px;">
+<h1>Stuyvesant High School Announcements</h1>
+<h2>Announcments for {{todayDate}}</h2>
+
+{% for a in anonce %}
+<!-- a[3] will give the annoucements title and a[4] will give the short text -->
+<p>
+<h3>{{a[3]}}</h3>
+<h3>{{a[4]}}</h3>
+</p>
+{% endfor %}
+
 </div>
-<div>
-  <h2>Announcments for {{todayDate}}</h2>
-  {% for a in anonce %}
-  <!-- a[3] will give the annoucements title and a[4] will give the short text -->
-  <h3>{{a[3]}}</h3>
-  <h3>{{a[4]}}</h3>
-  {% endfor %}
-</div>
 
-<hr>
-<hr>
-<hr>
-
-<div>
-  <h3> Click here to submit a new Announcement </h3>
-  <button onclick="window.location.href='/submit'">New Announcement</button>
-</div>
-
-<script>
-document.body.style.backgroundColor = "#ffff9f";
-document.getElementById("divhead").style.backgroundColor = "#ff0000";
-document.getElementById("header").style.color = "blue";
-document.getElementById("header").style.font = "italic bold 40px times new roman,serif";
-</script>
-
-
+</body>
 </html>
+
