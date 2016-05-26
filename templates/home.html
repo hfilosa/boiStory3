@@ -2,57 +2,22 @@
 <html>
 <head>
   <title>Stuy Announcements</title>
-  <style>
-  body {margin:0;}
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #533;
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
-
-  li {
-    float: left;
-  }
-
-  li {
-    border-right: 1px solid #bbb;
-  }
-
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-
-  li a:hover:not(.active) {
-    background-color: #111;
-  }
-
-.active {
-    background-color: #4CAF50;
-}
-</style>
+  <link rel="stylesheet" type="text/css" href="../static/header.css">
 </head>
 <body>
 
-<ul>
-  <li><a class="active" href="#home">Home</a></li>
+<div1>
+  <ul>
+  <li><a class="active" href="/home">Home</a></li>
   <li><a href="/submit">New Announcement</a></li>
   <li><a href="#contact">Contact</a></li>
   <li><a href="#about">About</a></li>
 </ul>
+</div1>
 
-<div style="padding:20px;margin-top:30px;background-color:#1abc9c;height:1500px;">
+<div style="padding:30px;margin-top:30px;background-color:#1abc9c;height:1000px;">
 <h1>Stuyvesant High School Announcements</h1>
-<h2>Announcments for {{todayDate}}</h2>
+<h2>Announcements for {{todayDate}}</h2>
 
 {% for a in anonce %}
 <!-- a[3] will give the annoucements title and a[4] will give the short text -->
