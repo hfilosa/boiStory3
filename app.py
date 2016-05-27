@@ -73,6 +73,10 @@ def submit():
             return redirect("/");
     return render_template("submit.html",error=errors,club="Club/Team Name",submitter="Name",osis="9-Digit OSIS",title="Announcement title",short_form="Short form of your announcement. 200 characters maximum",long_form="Optional longer form of your announcement")
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
 if __name__ == "__main__":
     app.debug = True
     app.secret_key = "Don't store this on github"
