@@ -1,6 +1,6 @@
 body {margin:0;}
 
-ul {
+ul.header {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -11,15 +11,9 @@ ul {
     width: 100%;
   }
 
-  li {
+  li.b a{
     float: left;
-  }
-
-  li {
     border-right: 1px solid #bbb;
-  }
-
-  li a {
     display: block;
     color: white;
     text-align: center;
@@ -27,7 +21,7 @@ ul {
     text-decoration: none;
   }
 
-  li a:hover:not(.active) {
+  li.b a:hover:not(.active) {
     background-color: #111;
   }
 
