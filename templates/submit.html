@@ -13,24 +13,29 @@
     <link rel="stylesheet" type="text/css" href="../static/header.css">
     <link rel="stylesheet" type="text/css" href="static/submit.css">
   </head>
-
+  
   <body>
-
+    
     <ul class="header">
       <li class="b"><a href="/home">Home</a></li>
       <li class="b"><a class="active" href="/submit">New Announcement</a></li>
       <li class="b"><a href="#contact">Contact</a></li>
       <li class="b"><a href="/about">About</a></li>
     </ul>
-
+    
     <div style="text-align: center; padding:30px;margin-top:30px;background-color:#f9bc9c;height:100px;">
       <a href="/home"><img src="../static/logo.png" alt="logo" style="float:left;width:75px;height:75px;"></a>
       <a href="/home"><img src="../static/logo.png" alt="logo" style="float:right;width:75px;height:75px;"></a>
       <h1 style="font-family: 'Droid serif', serif; font-size: 40px; font-weight: bold; font-style: italic;">Stuyvesant High School Announcements</h1>
       <hr class="style-seven">
     </div>
-
+    
     <div class="submitThing">
+      {% if error != None %}
+      {% for e in error %}
+      <h1>{{e}}</h1>
+      {% endfor %}
+      {% endif %}
       <form class="form-style-7" style="padding:20px;background-color:#fabc9c;height:1000px;">
         <ul>
           
@@ -39,10 +44,10 @@
           
           <label for="name">Your Name</label>
           <input type="text" name="name" required maxlength="30" placeholder="Enter your name here">
-        
+          
           <label for="name">OSIS</label>
           <input type="text" name="osis" required maxlength="9" placeholder="Enter your 9-Digit OSIS here">
-
+	  
           <label for="name">Title</label>
           <input type="text" name="osis" required maxlength="50" placeholder="Title of your announcement. Ex. Peglegs win Championship 50 characters maximum">
           
@@ -58,49 +63,50 @@
           
         </ul>
       </form>
-    <div>
+      <div>
   </body>
-
-<!--
-<html>
-  <head>
-    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
-    <script src='lib/jquery.js'></script>
-    <script src='lib/moment.js'></script>
-    <script src='fullcalendar/fullcalendar.js'></script>
-    <script>
-    $(document).ready(function() {
-
-    // page is now ready, initialize the calendar...
-
-    $('#calendar').fullCalendar({
-        // put your options and callbacks here
-    })
-}); </script>
-
-    <title>Submit New Announcement</title>
-  </head>
-  <body>
-    {% if error != None %}
-    {% for e in error %}
-    <h1>{{e}}</h1>
-    {% endfor %}
-    {% endif %}
-    <form action="/submit" method="post">
-       <input type="text" name="club" value="{{club}}">
-      <input type="text" name="submitter" value="{{submitter}}">
-      <input type="text" name="osis" value="{{osis}}">
-      <br>
-      <input type="text" name="title" value="{{title}}">
-      <br>
-      <input type="text" name="short" value="{{short_form}}">
-      <br>
-      <br>
-      <input type="text" name="long" value="{{long_form}}">
-      <br>
-      <input type="submit" value="Submit">
-    </form>
-    <div id='calendar'></div>
-  </body>
-</html>
--->
+  
+  <!--
+      <html>
+	<head>
+	  <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+	  <script src='lib/jquery.js'></script>
+	  <script src='lib/moment.js'></script>
+	  <script src='fullcalendar/fullcalendar.js'></script>
+	  <script>
+	    $(document).ready(function() {
+	    
+	    // page is now ready, initialize the calendar...
+	    
+	    $('#calendar').fullCalendar({
+            // put your options and callbacks here
+	    })
+	    }); </script>
+	  
+	  <title>Submit New Announcement</title>
+	</head>
+	<body>
+	  {% if error != None %}
+	  {% for e in error %}
+	  <h1>{{e}}</h1>
+	  {% endfor %}
+	  {% endif %}
+	  <form action="/submit" method="post">
+	    <input type="text" name="club" value="{{club}}">
+	    <input type="text" name="submitter" value="{{submitter}}">
+	    <input type="text" name="osis" value="{{osis}}">
+	    <br>
+	    <input type="text" name="title" value="{{title}}">
+	    <br>
+	    <input type="text" name="short" value="{{short_form}}">
+	    <br>
+	    <br>
+	    <input type="text" name="long" value="{{long_form}}">
+	    <br>
+	    <input type="submit" value="Submit">
+	  </form>
+	  <div id='calendar'></div>
+	</body>
+      </html>
+      -->
+  
