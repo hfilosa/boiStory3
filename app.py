@@ -61,6 +61,7 @@ def submit():
         if len(errors)>0:    
             return render_template("submit.html",error=errors,club=club1,submitter=submitter1,osis=osis1,title=title1,short_form=short1,long_form=long_form1)
         else:
+	    print "success" 
             year=str(datetime.date.today().year)
             month=str(datetime.date.today().month)
             if int(month)<10:
@@ -70,7 +71,7 @@ def submit():
                 day="0"+day
             currentDate=year+"-"+month+"-"+day
             backend.addAnnouncement(club1,submitter1,osis1,title1,short_form1,long_form1,currentDate);
-            return redirect("/");
+            return redirect(url_for("/"));
     return render_template("submit.html",error=errors,club="Club/Team Name",submitter="Name",osis="9-Digit OSIS",title="Announcement title",short_form="Short form of your announcement. 200 characters maximum",long_form="Optional longer form of your announcement")
 
 @app.route("/about")
