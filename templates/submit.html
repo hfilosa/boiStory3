@@ -12,6 +12,21 @@
     <title>Stuy Announcements</title>
     <link rel="stylesheet" type="text/css" href="../static/header.css">
     <link rel="stylesheet" type="text/css" href="static/submit.css">
+<!--calendar-->
+    <script type="text/javascript" src="MultiDatesPicker/js/jquery.js"></script>
+    <script type="text/javascript" src="lib/jquery-ui.js"></script>
+    <script type="text/javascript" src="MultiDatesPicker/jquery-ui.multidatespicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="MultiDatesPicker/css/mdp.css">
+    <link rel="stylesheet" type="text/css" href="MultiDatesPicker/css/prettify.css">
+    <script type="text/javascript" src="js/prettify.js"></script>
+    <script type="text/javascript" src="js/lang-css.js"></script>
+    <script>
+        console.log($('#datePick'));
+        onload= function(){
+         $('#datePick').multiDatesPicker();
+            }   
+    </script> 
+    <!--end cal-->
   </head>
   
   <body>
