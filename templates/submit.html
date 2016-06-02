@@ -18,8 +18,8 @@
     <script type="text/javascript" src="MultiDatesPicker/jquery-ui.multidatespicker.js"></script>
     <link rel="stylesheet" type="text/css" href="MultiDatesPicker/css/mdp.css">
     <link rel="stylesheet" type="text/css" href="MultiDatesPicker/css/prettify.css">
-    <script type="text/javascript" src="js/prettify.js"></script>
-    <script type="text/javascript" src="js/lang-css.js"></script>
+    <script type="text/javascript" src="MultiDatesPicker/js/prettify.js"></script>
+    <script type="text/javascript" src="MultiDatesPicker/js/lang-css.js"></script>
     <script>
         console.log($('#datePick'));
         onload= function(){
@@ -65,6 +65,11 @@
 	  
           <label for="name">Title</label>
           <input type="text" name="title" required maxlength="50" placeholder="Title of your announcement. Ex. Peglegs win Championship 50 characters maximum">
+
+          <label for="name">Date</label>
+          <input id ='datePick' type="text"/>
+
+
           
           <label for="bio"></label>
           <textarea name="short" onkeyup="adjust_textarea(this)" maxlength="150"></textarea>
