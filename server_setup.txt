@@ -1,0 +1,17 @@
+#Introduction:
+This guide is written with the intention of setting up the stuyvesant announcements page to run as a server. 
+The server will use Nginx, Gunicorn, Flask, and SQLITE.
+To follow this instruction manual the user will need SUDO privileges. 
+
+#Preliminary Installations:
+The following packages must be installed to proceed. Execute these commands in order
+1. sudo apt-get update
+2. sudo apt-get install python-pip python-dev nginx
+
+#Setup a virtual eviroment:
+1. 
+
+
+If there are issues, consult this guide: 
+https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-14-04
+These procedures were based off of this.
