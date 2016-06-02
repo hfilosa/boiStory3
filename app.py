@@ -38,6 +38,9 @@ def submit():
         title1=request.form["title"]
         short_form1=request.form["short"]
         long_form1=request.form["long"]
+        date=request.form["date"]
+
+        print date
 
         if club1  == "Club/Team Name" or club1 is None:
             errors.append("No Club/Team name given")
