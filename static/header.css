@@ -77,3 +77,16 @@ div.submitThing {
     background-color: #f9bc9c;
     padding: 20px;
 }
+
+hr.style2 {
+    border-top: 3px double #8c8b8b;
+}
+
+div.announce{
+    max-width:600px;
+    margin:40px auto;
+    background:#fff;
+    border-radius:25px;
+    padding:20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
