@@ -2,7 +2,7 @@
         listen 80;
         server_name stuy.announce.ro;
 
-        root /home/user/boistory3;
+        root #path_to_repo;
 
         location / {
                 include proxy_params;
