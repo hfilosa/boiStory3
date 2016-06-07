@@ -19,7 +19,7 @@ Inputs: club        -> The club or team submitting the announcement
         title       -> The title of the announcement
         short_text  -> The short form of the announcement
         long_text   -> The long form of the announcement
-        date        -> The time the announcement is logged as
+        date        -> The time the announcement is logged as YYYY-MM-DD
 Returns: 
   Nothing
 """

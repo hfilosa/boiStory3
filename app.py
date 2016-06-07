@@ -18,13 +18,10 @@ def home():
         day="0"+day
     currentDate=year+"-"+month+"-"+day
     print currentDate
-    #currentDate="2016-05-18"
-    #displayDate="5/18/16"
+    #currentDate="2016-06-08"
+    #displayDate="6/8/16"
     
     announcements=backend.getAnnouncementByDate(currentDate)
-    print 1
-    print announcements
-    #print announcements[0]
     return render_template("home.html",anonce=announcements,todayDate=displayDate)
 
 @app.route("/submit",methods=["GET","POST"])
@@ -39,9 +36,8 @@ def submit():
         short_form1=request.form["short"]
         long_form1=request.form["long"]
         print "Before pull"
-        date=request.form["date"]
-        print "After pull"
-        print date
+        dates=request.form["date"] 
+        print dates
 
         if club1  == "Club/Team Name" or club1 is None:
             errors.append("No Club/Team name given")
@@ -65,17 +61,15 @@ def submit():
         if len(errors)>0:    
             return render_template("submit.html",error=errors,club=club1,submitter=submitter1,osis=osis1,title=title1,short_form=short1,long_form=long_form1)
         else:
-	    print "success" 
-            year=str(datetime.date.today().year)
-            month=str(datetime.date.today().month)
-            if int(month)<10:
-                month="0"+month
-            day=str(datetime.date.today().day)
-            if int(day)<10:
-                day="0"+day
-            currentDate=year+"-"+month+"-"+day
-            backend.addAnnouncement(club1,submitter1,osis1,title1,short_form1,long_form1,currentDate);
-            return redirect(url_for("/"));
+            print "success"
+            dates=dates.split(",")
+            for date in dates:
+                print date
+                date=date.strip()
+                split=date.split("/")
+                currentDate=split[2]+"-"+split[0]+"-"+split[1]
+                backend.addAnnouncement(club1,submitter1,osis1,title1,short_form1,long_form1,currentDate)
+            return redirect("/")
     return render_template("submit.html",error=errors,club="Club/Team Name",submitter="Name",osis="9-Digit OSIS",title="Announcement title",short_form="Short form of your announcement. 200 characters maximum",long_form="Optional longer form of your announcement")
 
 @app.route("/about")
