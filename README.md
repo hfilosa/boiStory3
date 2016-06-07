@@ -25,6 +25,11 @@ The following packages must be installed to proceed. Execute these commands in o
 3. Test if nginx works with: sudo nginx -t
 4. Restart nginx server: sudo service nginx restart
 
+##A NOTE ON PORTS:
+1. The server is configured to run on port 8002
+2. If port 8002 is taken, simply change the port in announcement_server to a free port
+3. After completing step 2, change the port number at the bottom of the app.py file
+
 ##Add domain to droplet networking
 1. Add stuy.announce.ro as an A record for the droplet with the IP being the server
 
