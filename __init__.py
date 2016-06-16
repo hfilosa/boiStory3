@@ -79,5 +79,5 @@ def about():
 
 if __name__ == "__main__":
     app.debug = True
-    app.secret_key = "Don't store this on github"
+    app.secret_key = ''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(32))
     app.run()
