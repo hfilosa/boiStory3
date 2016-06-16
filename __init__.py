@@ -22,7 +22,7 @@ def home():
     #displayDate="6/8/16"
     
     announcements=backend.getAnnouncementByDate(currentDate)
-    return render_template(os.path.dirname(__file__)+"/"+"home.html",anonce=announcements,todayDate=displayDate)
+    return render_template(os.path.dirname(__file__)+"home.html",anonce=announcements,todayDate=displayDate)
 
 @app.route("/submit",methods=["GET","POST"])
 def submit():
@@ -59,7 +59,7 @@ def submit():
         if long_form1 is None:
             long_form="Optional longer form of your announcement"
         if len(errors)>0:    
-            return render_template("submit.html",error=errors,club=club1,submitter=submitter1,osis=osis1,title=title1,short_form=short1,long_form=long_form1)
+            return render_template(os.path.dirname(__file__)+"/"+"submit.html",error=errors,club=club1,submitter=submitter1,osis=osis1,title=title1,short_form=short1,long_form=long_form1)
         else:
             print "success"
             dates=dates.split(",")
