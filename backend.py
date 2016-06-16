@@ -1,6 +1,6 @@
 import os, sqlite3, csv, random 
 
-db_name = "archive.db"
+db_name = os.path.dirname(__file__)+"archive.db"
 
 def go():
     if (not os.path.exists(db_name)):
