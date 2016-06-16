@@ -22,7 +22,7 @@ def home():
     #displayDate="6/8/16"
     
     announcements=backend.getAnnouncementByDate(currentDate)
-    return render_template(os.path.dirname(__file__)+"/"+"home.html",anonce=announcements,todayDate=displayDate)
+    return render_template(os.path.dirname(__file__)+"/templates/"+"home.html",anonce=announcements,todayDate=displayDate)
 
 @app.route("/submit",methods=["GET","POST"])
 def submit():
@@ -70,11 +70,11 @@ def submit():
                 currentDate=split[2]+"-"+split[0]+"-"+split[1]
                 backend.addAnnouncement(club1,submitter1,osis1,title1,short_form1,long_form1,currentDate)
             return redirect("/")
-    return render_template(os.path.dirname(__file__)+"/"+"submit.html",error=errors,club="Club/Team Name",submitter="Name",osis="9-Digit OSIS",title="Announcement title",short_form="Short form of your announcement. 200 characters maximum",long_form="Optional longer form of your announcement")
+    return render_template(os.path.dirname(__file__)+"/templates/"+"submit.html",error=errors,club="Club/Team Name",submitter="Name",osis="9-Digit OSIS",title="Announcement title",short_form="Short form of your announcement. 200 characters maximum",long_form="Optional longer form of your announcement")
 
 @app.route("/about")
 def about():
-    return render_template(os.path.dirname(__file__)+"/"+"about.html")
+    return render_template(os.path.dirname(__file__)+"/templates/"+"about.html")
 
 if __name__ == "__main__":
     app.debug = True
