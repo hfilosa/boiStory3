@@ -1,4 +1,5 @@
 from flask import Flask,render_template, session, request, redirect, url_for 
+import os
 import backend
 import datetime
 
@@ -22,7 +23,7 @@ def home():
     #displayDate="6/8/16"
     
     announcements=backend.getAnnouncementByDate(currentDate)
-    return render_template(os.path.dirname(__file__)+"home.html",anonce=announcements,todayDate=displayDate)
+    return render_template(os.path.dirname(__file__)+"/"+"home.html",anonce=announcements,todayDate=displayDate)
 
 @app.route("/submit",methods=["GET","POST"])
 def submit():
